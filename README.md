@@ -33,4 +33,6 @@ All preview responses include `noindex` instructions. The site is publicly viewa
 - `design-reference/exported-mockups.html`: original standalone export for reference, excluded from deployment.
 - `wrangler.jsonc`: Cloudflare Pages configuration.
 
-The form, clinician profiles, Berkeley photograph, and final privacy notice are placeholders. The San Rafael photography and logo come from the client-provided asset folder.
+Mica Gonzalez, PhD and Sam Himelstein, PhD are shown using the photos and credentials supplied by Marvin. The third clinician, intake form, Berkeley photograph, and final privacy notice remain placeholders. The San Rafael photography and logo come from the client-provided asset folder.
+
+Both pages provide explicit Family Spring browser titles, Open Graph metadata, and social card titles. Crawlers may read this metadata; the noindex meta tags and response headers remain in place.

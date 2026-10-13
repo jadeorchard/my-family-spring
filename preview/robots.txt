@@ -1,2 +1,5 @@
 User-agent: *
-Disallow: /
+Allow: /
+
+# Preview pages remain excluded from search indexing by their noindex meta tag
+# and the X-Robots-Tag header. Crawlers may read the sharing metadata.

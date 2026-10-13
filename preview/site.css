@@ -55,6 +55,7 @@
 #fs-concepts .fs-insurance-detail h3 { margin-bottom:12px; }
 #fs-concepts .fs-portrait { width:min(132px,100%); aspect-ratio:1; display:flex; align-items:center; justify-content:center; flex-direction:column; background:var(--soft); border-radius:50%; margin:0 0 16px; }
 #fs-concepts .fs-portrait span { color:var(--muted); font-size:11px; line-height:20px; }
+#fs-concepts .fs-portrait img { display:block; width:100%; height:100%; object-fit:cover; border-radius:50%; }
 #fs-concepts .fs-clinician p { margin-top:8px; font-size:13px; line-height:20px; color:var(--muted); }
 #fs-concepts .fs-clinician h3 { font-size:18px; line-height:26px; }
 #fs-concepts .fs-location { padding-top:16px; border-top:1px solid var(--line); }
