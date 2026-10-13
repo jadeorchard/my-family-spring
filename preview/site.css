@@ -41,6 +41,8 @@
 #fs-concepts .fs-section + .fs-section { border-top:1px solid var(--line); }
 #fs-concepts .fs-section-intro { display:flex; gap:24px; justify-content:space-between; align-items:end; margin-bottom:24px; }
 #fs-concepts .fs-section-intro p { max-width:250px; font-size:16px; line-height:24px; }
+#fs-concepts .fs-team .fs-section-intro { display:block; }
+#fs-concepts .fs-team .fs-section-intro > p { max-width:640px; margin-top:12px; }
 #fs-concepts .fs-three { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px; }
 #fs-concepts .fs-step-number { font:500 25px/32px 'Raleway','Helvetica Neue',Arial,sans-serif; color:var(--green); display:block; margin-bottom:12px; }
 #fs-concepts .fs-step p { font-size:16px; line-height:24px; margin-top:12px; }
