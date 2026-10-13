@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Raleway:wght@400;500;600;700&display=swap');
+#fs-concepts { width:100%; position:relative; }
+#fs-concepts .fs-page { color-scheme:light; --paper:#FFFFFF; --ink:#000000; --body:#464646; --muted:#6B6D70; --green:#257002; --spring:#35B729; --on-green:#FFFFFF; --soft:#F2F2F2; --line:#EDEDED; --white:#FFFFFF; --radius:5px; background:var(--paper); color:var(--ink); font-family:'Raleway','Helvetica Neue',Arial,sans-serif; font-size:16px; line-height:1.5; max-width:100%; margin:0 auto; container-type:inline-size; }
+#fs-concepts .fs-page * { box-sizing:border-box; }
+#fs-concepts .fs-page [hidden] { display:none!important; }
+#fs-concepts .fs-page h1,#fs-concepts .fs-page h2,#fs-concepts .fs-page h3,#fs-concepts .fs-page p { margin:0; }
+#fs-concepts .fs-page h1 { font:600 30px/36px 'Raleway','Helvetica Neue',Arial,sans-serif; letter-spacing:-.4px; color:var(--ink); }
+#fs-concepts .fs-page h2 { font:600 25px/32px 'Raleway','Helvetica Neue',Arial,sans-serif; letter-spacing:-.2px; color:var(--ink); }
+#fs-concepts .fs-page h3 { font:600 20px/26px 'Raleway','Helvetica Neue',Arial,sans-serif; color:var(--ink); }
+#fs-concepts .fs-page p { color:var(--body); }
+#fs-concepts .fs-page button { font-family:inherit; }
+#fs-concepts .fs-wrap { padding:0 40px; }
+#fs-concepts .fs-preview { display:flex; flex-wrap:wrap; gap:4px 16px; align-items:center; justify-content:space-between; padding:8px 24px; background:var(--soft); color:var(--muted); font-size:11px; line-height:20px; }
+#fs-concepts .fs-header { display:flex; align-items:center; justify-content:space-between; gap:40px; padding-top:40px; padding-bottom:40px; border-bottom:1px solid var(--line); background:var(--white); }
+#fs-concepts .fs-brand { display:block; flex-shrink:0; line-height:0; background:var(--white); }
+#fs-concepts .fs-brand img { display:block; width:190px; height:auto; }
+#fs-concepts .fs-header-note { font-size:13px; line-height:20px; text-align:right; color:var(--muted); max-width:190px; }
+#fs-concepts .fs-eyebrow { display:block; color:var(--green); font-size:13px; line-height:20px; font-weight:600; letter-spacing:1.2px; text-transform:uppercase; margin-bottom:16px; }
+#fs-concepts .fs-hero { display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,1fr); gap:32px; padding-top:40px; padding-bottom:40px; align-items:start; }
+#fs-concepts .fs-hero-copy::before { content:''; display:block; width:56px; height:4px; background:var(--spring); margin-bottom:24px; }
+#fs-concepts .fs-lede { margin-top:20px!important; font-size:18px; line-height:36px; }
+#fs-concepts .fs-action { background:var(--green); color:var(--on-green); border:0; border-radius:5px; min-height:48px; padding:20px 40px; font-size:15px; line-height:24px; font-weight:500; text-align:center; display:inline-flex; align-items:center; justify-content:center; text-decoration:none; max-width:100%; }
+#fs-concepts .fs-action:hover { background:var(--ink); }
+#fs-concepts .fs-hero-copy > .fs-action { margin-top:24px; }
+#fs-concepts .fs-text-button { border:0; padding:12px 0; min-height:44px; background:transparent; color:var(--green); text-decoration:underline; text-underline-offset:4px; font-size:13px; line-height:20px; font-weight:500; text-align:left; }
+#fs-concepts .fs-intake { background:var(--white); border:1px solid var(--line); border-radius:var(--radius); padding:24px; }
+#fs-concepts .fs-intake h2 { font:600 25px/32px 'Raleway','Helvetica Neue',Arial,sans-serif; }
+#fs-concepts .fs-intake > p { font-size:16px; line-height:24px; margin-top:16px; }
+#fs-concepts .fs-form-placeholder { margin-top:24px; padding:20px; min-height:220px; border:1px solid var(--line); background:var(--soft); border-radius:3px; }
+#fs-concepts .fs-form-placeholder strong { display:block; color:var(--ink); font-size:15px; line-height:24px; font-weight:600; }
+#fs-concepts .fs-form-placeholder > p { margin:8px 0 16px; font-size:13px; line-height:20px; color:var(--muted); }
+#fs-concepts .fs-form-row { display:flex; gap:12px; align-items:center; padding:12px 0; border-top:1px solid var(--white); font-size:13px; line-height:20px; color:var(--body); }
+#fs-concepts .fs-form-row span { width:20px; height:20px; display:grid; place-items:center; font-size:11px; color:var(--green); background:var(--white); border-radius:50%; flex-shrink:0; }
+#fs-concepts .fs-demo-caption { display:block; color:var(--muted); font-size:11px; line-height:20px; margin-top:12px; }
+#fs-concepts .fs-media { margin:24px 0 0; padding:0; background:var(--white); color:var(--muted); }
+#fs-concepts .fs-media img { width:100%; height:auto; aspect-ratio:4/3; object-fit:cover; display:block; border-radius:5px; }
+#fs-concepts .fs-media figcaption { font-size:13px; line-height:20px; padding-top:8px; color:var(--muted); }
+#fs-concepts .fs-facts { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); background:var(--soft); padding:24px 40px; gap:16px; color:var(--body); text-align:left; font-size:13px; line-height:20px; }
+#fs-concepts .fs-facts span { border-left:3px solid var(--spring); padding-left:12px; }
+#fs-concepts .fs-section { padding-top:40px; padding-bottom:40px; }
+#fs-concepts .fs-section + .fs-section { border-top:1px solid var(--line); }
+#fs-concepts .fs-section-intro { display:flex; gap:24px; justify-content:space-between; align-items:end; margin-bottom:24px; }
+#fs-concepts .fs-section-intro p { max-width:250px; font-size:16px; line-height:24px; }
+#fs-concepts .fs-three { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px; }
+#fs-concepts .fs-step-number { font:500 25px/32px 'Raleway','Helvetica Neue',Arial,sans-serif; color:var(--green); display:block; margin-bottom:12px; }
+#fs-concepts .fs-step p { font-size:16px; line-height:24px; margin-top:12px; }
+#fs-concepts .fs-help { background:var(--soft); }
+#fs-concepts .fs-help-item { border-top:3px solid var(--spring); padding-top:16px; }
+#fs-concepts .fs-help-item p { font-size:16px; line-height:24px; margin-top:12px; }
+#fs-concepts .fs-supporting { font-size:13px; line-height:20px; color:var(--muted)!important; margin-top:24px!important; }
+#fs-concepts .fs-insurance { display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center; }
+#fs-concepts .fs-insurance p { font-size:16px; line-height:24px; }
+#fs-concepts .fs-insurance h2 { margin-bottom:16px; }
+#fs-concepts .fs-insurance-detail { padding-left:24px; border-left:1px solid var(--line); }
+#fs-concepts .fs-insurance-detail h3 { margin-bottom:12px; }
+#fs-concepts .fs-portrait { width:min(132px,100%); aspect-ratio:1; display:flex; align-items:center; justify-content:center; flex-direction:column; background:var(--soft); border-radius:50%; margin:0 0 16px; }
+#fs-concepts .fs-portrait span { color:var(--muted); font-size:11px; line-height:20px; }
+#fs-concepts .fs-clinician p { margin-top:8px; font-size:13px; line-height:20px; color:var(--muted); }
+#fs-concepts .fs-clinician h3 { font-size:18px; line-height:26px; }
+#fs-concepts .fs-location { padding-top:16px; border-top:1px solid var(--line); }
+#fs-concepts .fs-location p { margin-top:12px; font-size:13px; line-height:20px; color:var(--muted); }
+#fs-concepts .fs-location-photo { display:block; width:100%; aspect-ratio:4/3; object-fit:cover; margin:0 0 16px; border-radius:5px; }
+#fs-concepts .fs-location-placeholder { aspect-ratio:4/3; display:grid; place-items:center; background:var(--soft); color:var(--muted); padding:16px; font-size:11px; line-height:20px; border-radius:5px; margin-bottom:16px; }
+#fs-concepts .fs-faq details { border-bottom:1px solid var(--line); }
+#fs-concepts .fs-faq summary { display:flex; justify-content:space-between; gap:20px; padding:20px 0; font-size:16px; line-height:24px; font-weight:500; list-style:none; }
+#fs-concepts .fs-faq summary::-webkit-details-marker { display:none; }
+#fs-concepts .fs-faq summary::after { content:'+'; color:var(--green); font-size:20px; }
+#fs-concepts .fs-faq details[open] summary::after { content:'−'; }
+#fs-concepts .fs-faq details p { padding:0 20px 24px 0; font-size:16px; line-height:24px; }
+#fs-concepts .fs-end { background:var(--soft); text-align:left; padding:40px 190px 40px 40px; border-top:4px solid var(--spring); position:relative; overflow:hidden; }
+#fs-concepts .fs-brand-motif { display:block; position:absolute; right:-40px; bottom:-40px; width:180px; height:180px; border:3px solid #000000; border-radius:50%; background:var(--spring); pointer-events:none; }
+#fs-concepts .fs-brand-motif > span { display:block; margin:20px; width:134px; height:134px; border:3px solid #000000; border-radius:50%; background:#F7FF1C; }
+#fs-concepts .fs-brand-motif > span > span { display:block; margin:20px; width:88px; height:88px; border:3px solid #000000; border-radius:50%; background:var(--white); }
+#fs-concepts .fs-end p { margin:16px 0 24px; max-width:500px; font-size:16px; line-height:24px; }
+#fs-concepts .fs-footer { padding-top:24px; padding-bottom:24px; font-size:13px; line-height:20px; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:16px; color:var(--muted); }
+#fs-concepts .fs-footer p { width:100%; font-size:13px; line-height:20px; color:var(--muted); }
+#fs-concepts .fs-privacy { margin:0 40px 24px; font-size:13px; line-height:20px; color:var(--body); padding:24px; background:var(--soft); border-radius:5px; }
+#fs-concepts .fs-thanks { padding:56px 40px; max-width:690px; margin:auto; }
+#fs-concepts .fs-thanks h1 { max-width:540px; }
+#fs-concepts .fs-thanks > p { margin-top:24px; font-size:18px; line-height:36px; }
+#fs-concepts .fs-thanks-icon { display:block; width:56px; height:4px; background:var(--spring); margin-bottom:24px; }
+#fs-concepts .fs-ready { margin-top:32px; background:var(--soft); border-radius:5px; padding:24px; }
+#fs-concepts .fs-ready ul { padding-left:20px; margin:16px 0 0; }
+#fs-concepts .fs-ready li { color:var(--body); font-size:16px; line-height:24px; margin:12px 0; }
+#fs-concepts .fs-thanks .fs-text-button { margin-top:24px; }
+#fs-concepts .fs-practical .fs-hero { background:var(--soft); }
+#fs-concepts .fs-practical .fs-hero h1 { color:var(--green); }
+#fs-concepts .fs-practical .fs-media { background:transparent; }
+#fs-concepts .fs-practical .fs-facts { background:var(--paper); border-bottom:1px solid var(--line); }
+#fs-concepts .fs-practical .fs-insurance { background:var(--soft); border-left:4px solid var(--spring); }
+#fs-concepts .fs-practical .fs-insurance .fs-insurance-detail { border-left-color:var(--white); }
+#fs-concepts .fs-process-list { display:grid; grid-template-columns:.8fr 1.2fr; gap:40px; }
+#fs-concepts .fs-process-list > div:first-child { background:var(--green); border-radius:5px; padding:24px; align-self:start; }
+#fs-concepts .fs-process-list > div:first-child h2,#fs-concepts .fs-process-list > div:first-child .fs-eyebrow { color:var(--white); }
+#fs-concepts .fs-process-list .fs-step { display:grid; grid-template-columns:24px 1fr; gap:16px; border-top:1px solid var(--line); padding:20px 0; }
+#fs-concepts .fs-process-list .fs-step-number { font-size:20px; line-height:26px; margin:0; }
+#fs-concepts .fs-process-list .fs-step p { margin-top:8px; }
+#fs-concepts .fs-practical .fs-help { background:var(--paper); }
+#fs-concepts .fs-practical .fs-help-item { background:var(--soft); padding:24px; border-top:3px solid var(--spring); border-radius:5px; }
+#fs-concepts .fs-practical .fs-location { border:1px solid var(--line); padding:16px; border-radius:5px; }
+#fs-concepts .fs-page:not(.fs-practical) .fs-section-intro h2,#fs-concepts .fs-page:not(.fs-practical) .fs-end h2 { font-family:'Playfair Display',Georgia,serif; font-weight:600; }
+#fs-concepts .fs-page.fs-mobile { width:390px; }
+@container (max-width:640px) {
+  #fs-concepts .fs-wrap { padding-left:24px; padding-right:24px; }
+  #fs-concepts .fs-header { padding:36px; }
+  #fs-concepts .fs-brand img { width:160px; }
+  #fs-concepts .fs-header-note { display:none; }
+  #fs-concepts .fs-hero { display:flex; flex-direction:column; gap:24px; padding-top:32px; }
+  #fs-concepts .fs-hero-copy { display:contents; }
+  #fs-concepts .fs-hero-copy::before { order:0; margin:0; }
+  #fs-concepts .fs-hero-copy .fs-eyebrow { order:1; margin:0; }
+  #fs-concepts .fs-hero h1 { order:2; font-size:30px; line-height:36px; }
+  #fs-concepts .fs-hero .fs-lede { order:3; margin:0!important; font-size:18px; line-height:30px; }
+  #fs-concepts .fs-hero-copy > .fs-action { display:none; }
+  #fs-concepts .fs-hero .fs-intake { order:4; width:100%; }
+  #fs-concepts .fs-hero .fs-media { order:5; width:100%; margin:0; }
+  #fs-concepts .fs-action { padding:20px 24px; }
+  #fs-concepts .fs-intake { padding:20px; }
+  #fs-concepts .fs-form-placeholder { padding:16px; }
+  #fs-concepts .fs-facts { grid-template-columns:1fr 1fr; padding:24px; gap:20px; }
+  #fs-concepts .fs-section { padding-top:32px; padding-bottom:32px; }
+  #fs-concepts .fs-section-intro { display:block; margin-bottom:24px; }
+  #fs-concepts .fs-section-intro p { margin-top:16px; max-width:none; }
+  #fs-concepts .fs-three,#fs-concepts .fs-insurance,#fs-concepts .fs-process-list { grid-template-columns:1fr; gap:24px; }
+  #fs-concepts .fs-step { display:grid; grid-template-columns:32px 1fr; gap:16px; }
+  #fs-concepts .fs-step-number { margin:0; }
+  #fs-concepts .fs-insurance-detail { padding-left:0; padding-top:24px; border-left:0; border-top:1px solid var(--line); }
+  #fs-concepts .fs-clinician { display:grid; grid-template-columns:80px 1fr; align-items:center; gap:16px; }
+  #fs-concepts .fs-portrait { width:80px; height:80px; margin:0; }
+  #fs-concepts .fs-portrait span { font-size:11px; }
+  #fs-concepts .fs-end { padding:32px 24px; }
+  #fs-concepts .fs-brand-motif { display:none; }
+  #fs-concepts .fs-thanks { padding:40px 24px; }
+  #fs-concepts .fs-thanks > p { font-size:16px; line-height:28px; }
+  #fs-concepts .fs-privacy { margin-left:24px; margin-right:24px; }
+}
+
+/* Expressive campaign direction: one clear action, grounded in the brand. */
+#fs-concepts .fs-page { --display-size:52px; }
+#fs-concepts .fs-hero { gap:40px; padding-top:48px; padding-bottom:48px; }
+#fs-concepts .fs-hero h1 { font-size:var(--display-size); line-height:1.04; font-weight:700; letter-spacing:-2px; }
+#fs-concepts .fs-hero h1 .fs-emphasis { color:var(--green); font-family:'Playfair Display',Georgia,serif; font-weight:600; font-style:italic; }
+#fs-concepts .fs-hero .fs-lede { font-size:18px; line-height:30px; margin-top:24px!important; }
+#fs-concepts .fs-hero-copy > .fs-eyebrow { font-size:11px; line-height:20px; letter-spacing:1.7px; margin-bottom:24px; }
+#fs-concepts .fs-hero-copy::before { width:72px; margin-bottom:24px; }
+#fs-concepts .fs-action { font-size:16px; font-weight:600; padding:18px 28px; }
+#fs-concepts .fs-intake { padding:28px; border:0; box-shadow:0 2px 8px rgba(18,63,110,.10); }
+#fs-concepts .fs-intake .fs-eyebrow { margin-bottom:12px; font-size:11px; letter-spacing:1.6px; }
+#fs-concepts .fs-intake h2 { font-size:28px; line-height:34px; letter-spacing:-.7px; }
+#fs-concepts .fs-intake > p { font-size:15px; line-height:24px; }
+#fs-concepts .fs-form-placeholder { margin-top:20px; min-height:200px; background:var(--soft); padding:20px; }
+#fs-concepts .fs-form-placeholder > p { font-size:12px; line-height:20px; }
+#fs-concepts .fs-form-row { font-size:13px; line-height:20px; padding:10px 0; }
+#fs-concepts .fs-intake .fs-text-button { width:100%; margin-top:16px; border-radius:5px; background:var(--green); color:var(--white); padding:14px 16px; text-align:center; text-decoration:none; font-size:14px; line-height:22px; }
+#fs-concepts .fs-facts { padding-top:24px; padding-bottom:24px; font-weight:600; }
+#fs-concepts .fs-facts span { border-left:0; padding-left:0; }
+#fs-concepts .fs-facts span::before { content:'•'; color:var(--green); padding-right:7px; }
+#fs-concepts .fs-page .fs-section-intro h2,#fs-concepts .fs-page .fs-end h2 { font-size:32px; line-height:38px; letter-spacing:-.8px; }
+#fs-concepts .fs-section { padding-top:48px; padding-bottom:48px; }
+#fs-concepts .fs-practical .fs-hero { background:var(--green); }
+#fs-concepts .fs-practical .fs-hero h1 { color:var(--white); }
+#fs-concepts .fs-practical .fs-hero h1 .fs-emphasis { color:#F7FF1C; }
+#fs-concepts .fs-practical .fs-hero-copy > .fs-eyebrow,#fs-concepts .fs-practical .fs-hero-copy > .fs-lede { color:var(--white); }
+#fs-concepts .fs-practical .fs-hero-copy::before { background:#F7FF1C; }
+#fs-concepts .fs-practical .fs-hero-copy > .fs-action { background:var(--white); color:var(--green); margin-top:28px; }
+#fs-concepts .fs-practical .fs-hero-copy > .fs-action:hover { background:#F7FF1C; color:var(--ink); }
+#fs-concepts .fs-hero-note { display:flex; gap:10px; align-items:center; font-size:12px; line-height:20px; margin-top:20px; color:var(--muted); }
+#fs-concepts .fs-practical .fs-hero-note { color:var(--white); }
+#fs-concepts .fs-hero-note::before { content:''; width:8px; height:8px; border-radius:50%; background:var(--spring); flex-shrink:0; }
+#fs-concepts .fs-hero-rings { display:flex; align-items:center; gap:0; margin-top:32px; height:116px; }
+#fs-concepts .fs-hero-rings span { display:block; width:116px; height:116px; border:20px solid var(--spring); border-radius:50%; }
+#fs-concepts .fs-hero-rings span+span { margin-left:-22px; border-color:var(--white); }
+#fs-concepts .fs-hero-rings span:last-child { border-color:#F7FF1C; }
+#fs-concepts .fs-feature { display:grid; grid-template-columns:1.2fr 1fr; gap:40px; align-items:center; }
+#fs-concepts .fs-feature .fs-media { margin:0; }
+#fs-concepts .fs-feature h2 { font-size:36px; line-height:40px; letter-spacing:-1px; margin-bottom:20px; }
+#fs-concepts .fs-feature h2 em { font-family:'Playfair Display',Georgia,serif; font-weight:600; color:var(--green); }
+#fs-concepts .fs-feature p { font-size:16px; line-height:26px; }
+#fs-concepts .fs-feature .fs-eyebrow { font-size:11px; letter-spacing:1.6px; }
+#fs-concepts .fs-process-list > div:first-child { padding:28px; }
+#fs-concepts .fs-process-list > div:first-child h2 { font-size:32px; line-height:38px; letter-spacing:-.6px; }
+#fs-concepts .fs-help-item h3 { font-size:22px; line-height:28px; }
+#fs-concepts .fs-page:not(.fs-practical) .fs-hero { background:var(--white); }
+#fs-concepts .fs-page:not(.fs-practical) .fs-hero .fs-intake { background:var(--soft); box-shadow:none; border-top:4px solid var(--spring); }
+#fs-concepts .fs-page:not(.fs-practical) .fs-form-placeholder { background:var(--white); }
+#fs-concepts .fs-page:not(.fs-practical) .fs-media { margin-top:32px; }
+#fs-concepts .fs-page:not(.fs-practical) .fs-facts { background:var(--green); color:var(--white); }
+#fs-concepts .fs-page:not(.fs-practical) .fs-facts span::before { color:#F7FF1C; }
+#fs-concepts .fs-page:not(.fs-practical) .fs-step-number { width:44px; height:44px; line-height:44px; border-radius:50%; background:var(--soft); color:var(--green); text-align:center; font-size:17px; }
+#fs-concepts .fs-end { padding-top:48px; padding-bottom:48px; background:var(--white); border-top:4px solid var(--spring); }
+#fs-concepts .fs-practical .fs-end { background:var(--green); color:var(--white); border-top:0; }
+#fs-concepts .fs-practical .fs-end h2,#fs-concepts .fs-practical .fs-end p { color:var(--white); }
+#fs-concepts .fs-practical .fs-end .fs-action { background:var(--white); color:var(--green); }
+#fs-concepts .fs-thanks h1 { font-size:42px; line-height:46px; letter-spacing:-1.2px; }
+#fs-concepts .fs-thanks h1 em { font-family:'Playfair Display',Georgia,serif; color:var(--green); font-weight:600; }
+@container (max-width:640px) {
+  #fs-concepts .fs-hero { gap:24px; padding-top:32px; padding-bottom:32px; }
+  #fs-concepts .fs-hero h1 { font-size:42px; line-height:45px; letter-spacing:-1.3px; }
+  #fs-concepts .fs-hero .fs-lede { margin-top:0!important; font-size:17px; line-height:28px; }
+  #fs-concepts .fs-hero-copy > .fs-eyebrow { margin-bottom:0; }
+  #fs-concepts .fs-hero-copy::before { margin-bottom:0; }
+  #fs-concepts .fs-hero .fs-intake { padding:24px; }
+  #fs-concepts .fs-intake h2 { font-size:27px; line-height:32px; }
+  #fs-concepts .fs-hero-note,#fs-concepts .fs-hero-rings { display:none; }
+  #fs-concepts .fs-feature { grid-template-columns:1fr; gap:24px; }
+  #fs-concepts .fs-feature h2 { font-size:32px; line-height:36px; }
+  #fs-concepts .fs-feature .fs-media { order:2; }
+  #fs-concepts .fs-section { padding-top:36px; padding-bottom:36px; }
+  #fs-concepts .fs-facts { gap:20px 16px; font-size:12px; }
+  #fs-concepts .fs-page:not(.fs-practical) .fs-step { grid-template-columns:44px 1fr; }
+  #fs-concepts .fs-page .fs-section-intro h2,#fs-concepts .fs-page .fs-end h2 { font-size:29px; line-height:35px; }
+  #fs-concepts .fs-thanks h1 { font-size:36px; line-height:40px; }
+}

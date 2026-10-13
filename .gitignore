@@ -6,3 +6,8 @@
 .env.*
 !.env.example
 !.env.sample
+
+# Local Cloudflare state
+.wrangler/
+.dev.vars
+.dev.vars.*
