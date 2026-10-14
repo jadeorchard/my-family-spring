@@ -69,10 +69,6 @@
 #fs-concepts .fs-location-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
 #fs-concepts .fs-location-video { grid-column:1 / -1; }
 #fs-concepts .fs-map { display:grid; place-items:center; width:100%; height:260px; margin:0 0 16px; border-radius:5px; overflow:hidden; background:var(--soft); }
-#fs-concepts .fs-map-prompt { display:flex; flex-direction:column; align-items:center; gap:16px; padding:24px; text-align:center; }
-#fs-concepts .fs-map-label { color:var(--ink); font-size:16px; line-height:24px; font-weight:600; }
-#fs-concepts .fs-map-load { border:0; border-radius:5px; background:var(--green); color:var(--white); padding:12px 18px; min-height:44px; font-size:14px; line-height:20px; font-weight:600; }
-#fs-concepts .fs-map-note { color:var(--muted); font-size:12px; line-height:18px; max-width:240px; }
 #fs-concepts .fs-map-frame { display:block; border:0; width:100%; height:100%; }
 #fs-concepts .fs-map-directions { margin-top:12px; }
 #fs-concepts .fs-faq details { border-bottom:1px solid var(--line); }
