@@ -66,8 +66,15 @@
 #fs-concepts .fs-clinician h3 { font-size:18px; line-height:26px; }
 #fs-concepts .fs-location { padding-top:16px; border-top:1px solid var(--line); }
 #fs-concepts .fs-location p { margin-top:12px; font-size:13px; line-height:20px; color:var(--muted); }
-#fs-concepts .fs-location-photo { display:block; width:100%; aspect-ratio:4/3; object-fit:cover; margin:0 0 16px; border-radius:5px; }
-#fs-concepts .fs-location-placeholder { aspect-ratio:4/3; display:grid; place-items:center; background:var(--soft); color:var(--muted); padding:16px; font-size:11px; line-height:20px; border-radius:5px; margin-bottom:16px; }
+#fs-concepts .fs-location-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+#fs-concepts .fs-location-video { grid-column:1 / -1; }
+#fs-concepts .fs-map { display:grid; place-items:center; width:100%; height:260px; margin:0 0 16px; border-radius:5px; overflow:hidden; background:var(--soft); }
+#fs-concepts .fs-map-prompt { display:flex; flex-direction:column; align-items:center; gap:16px; padding:24px; text-align:center; }
+#fs-concepts .fs-map-label { color:var(--ink); font-size:16px; line-height:24px; font-weight:600; }
+#fs-concepts .fs-map-load { border:0; border-radius:5px; background:var(--green); color:var(--white); padding:12px 18px; min-height:44px; font-size:14px; line-height:20px; font-weight:600; }
+#fs-concepts .fs-map-note { color:var(--muted); font-size:12px; line-height:18px; max-width:240px; }
+#fs-concepts .fs-map-frame { display:block; border:0; width:100%; height:100%; }
+#fs-concepts .fs-map-directions { margin-top:12px; }
 #fs-concepts .fs-faq details { border-bottom:1px solid var(--line); }
 #fs-concepts .fs-faq summary { display:flex; justify-content:space-between; gap:20px; padding:20px 0; font-size:16px; line-height:24px; font-weight:500; list-style:none; }
 #fs-concepts .fs-faq summary::-webkit-details-marker { display:none; }
@@ -129,6 +136,7 @@
   #fs-concepts .fs-section-intro { display:block; margin-bottom:24px; }
   #fs-concepts .fs-section-intro p { margin-top:16px; max-width:none; }
   #fs-concepts .fs-three,#fs-concepts .fs-insurance,#fs-concepts .fs-process-list { grid-template-columns:1fr; gap:24px; }
+  #fs-concepts .fs-location-grid { grid-template-columns:1fr; }
   #fs-concepts .fs-step { display:grid; grid-template-columns:32px 1fr; gap:16px; }
   #fs-concepts .fs-step-number { margin:0; }
   #fs-concepts .fs-insurance-detail { padding-left:0; padding-top:24px; border-left:0; border-top:1px solid var(--line); }

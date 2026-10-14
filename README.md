@@ -35,6 +35,8 @@ All preview responses include `noindex` instructions. The site is publicly viewa
 - `design-reference/exported-mockups.html`: original standalone export for reference, excluded from deployment.
 - `wrangler.jsonc`: Cloudflare Pages configuration.
 
-Tori Haugen, LMFT; Geralyn Gendron, LMFT; and Daniel Hagan, LMFT are shown using the photos and credentials supplied by Marvin. The intake form, Berkeley photograph, and final privacy notice remain placeholders. The San Rafael photography and logo come from the client-provided asset folder.
+Tori Haugen, LMFT; Geralyn Gendron, LMFT; and Daniel Hagan, LMFT are shown using the photos and credentials supplied by Marvin. The intake form and final privacy notice remain placeholders. The San Rafael interior photography and logo come from the client-provided asset folder.
+
+Both office cards use the Google Maps embed URLs from Family Spring's public website. Maps connect to Google only after a visitor selects **Load Google Map**; their full addresses and **Get Directions** links are always available. No API key or Google Maps JavaScript library is used. The CSP permits the two Google iframe origins only; other third-party tracking scripts remain disabled. A map interaction may transmit browser/network information to Google and needs inclusion in the final privacy review before a patient campaign launches.
 
 Both pages provide explicit Family Spring browser titles, Open Graph metadata, and social card titles. Crawlers may read this metadata; the noindex meta tags and response headers remain in place.

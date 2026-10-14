@@ -64,5 +64,19 @@
       button.setAttribute('aria-expanded', String(!notice.hidden));
     });
   });
+  root.querySelectorAll('[data-load-map]').forEach(button => {
+    button.addEventListener('click', () => {
+      const container = button.closest('.fs-map');
+      if (container.querySelector('iframe')) return;
+      const frame = document.createElement('iframe');
+      frame.className = 'fs-map-frame';
+      frame.title = button.dataset.mapTitle;
+      frame.referrerPolicy = 'no-referrer';
+      frame.allowFullscreen = true;
+      frame.src = button.dataset.mapSrc;
+      container.replaceChildren(frame);
+      frame.focus();
+    });
+  });
   render();
 })();
