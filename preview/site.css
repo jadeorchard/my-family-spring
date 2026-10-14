@@ -39,6 +39,7 @@
 #fs-concepts .fs-fact { display:flex; align-items:center; gap:12px; min-width:0; }
 #fs-concepts .fs-fact-icon { display:grid; place-items:center; width:44px; height:44px; flex:0 0 44px; padding:4px; background:var(--green); border-radius:5px; }
 #fs-concepts .fs-fact-icon img { display:block; width:36px; height:36px; }
+#fs-concepts .fs-practical .fs-fact-icon { background:transparent; border-radius:0; }
 #fs-concepts .fs-fact-label { min-width:0; }
 #fs-concepts .fs-section { padding-top:40px; padding-bottom:40px; }
 #fs-concepts .fs-section + .fs-section { border-top:1px solid var(--line); }
