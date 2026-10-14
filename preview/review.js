@@ -4,8 +4,8 @@
   const viewSelect = document.getElementById('review-view');
   const isThankYou = location.pathname.replace(/\/+$/, '') === '/thank-you';
   const pageName = isThankYou ? 'Thank-You Preview' : 'Landing Page Preview';
-  const allowedDesigns = ['warm', 'practical'];
-  let design = 'warm';
+  const allowedDesigns = ['practical', 'warm'];
+  let design = 'practical';
   let mobile = false;
 
   function pathFor(path) {
@@ -16,7 +16,7 @@
 
   function render() {
     const query = new URLSearchParams(location.search);
-    design = allowedDesigns.includes(query.get('design')) ? query.get('design') : 'warm';
+    design = allowedDesigns.includes(query.get('design')) ? query.get('design') : 'practical';
     mobile = query.get('view') === 'mobile';
     designSelect.value = design;
     viewSelect.value = mobile ? 'mobile' : 'responsive';

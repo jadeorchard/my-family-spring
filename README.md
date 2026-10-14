@@ -4,6 +4,8 @@ Client review preview for Family Spring's planned Google Ads landing page and th
 
 The preview includes the Warm & personal and Clear & practical design options. It does not collect or submit patient information. OnceHub, advertising tags, and analytics are not installed.
 
+Clear & practical is the default, following client preference. Both designs use custom trust-strip icons; Clear & practical uses credential, insurance, two-office, and video-consultation symbols in a two-column mobile layout.
+
 - [Client review](https://family-spring-review.pages.dev/)
 - [Thank-you preview](https://family-spring-review.pages.dev/thank-you/)
 

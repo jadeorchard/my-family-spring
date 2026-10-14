@@ -35,8 +35,11 @@
 #fs-concepts .fs-media { margin:24px 0 0; padding:0; background:var(--white); color:var(--muted); }
 #fs-concepts .fs-media img { width:100%; height:auto; aspect-ratio:4/3; object-fit:cover; display:block; border-radius:5px; }
 #fs-concepts .fs-media figcaption { font-size:13px; line-height:20px; padding-top:8px; color:var(--muted); }
-#fs-concepts .fs-facts { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); background:var(--soft); padding:24px 40px; gap:16px; color:var(--body); text-align:left; font-size:13px; line-height:20px; }
-#fs-concepts .fs-facts span { border-left:3px solid var(--spring); padding-left:12px; }
+#fs-concepts .fs-facts { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); list-style:none; margin:0; background:var(--soft); padding:24px 40px; gap:16px; color:var(--body); text-align:left; font-size:13px; line-height:20px; }
+#fs-concepts .fs-fact { display:flex; align-items:center; gap:12px; min-width:0; }
+#fs-concepts .fs-fact-icon { display:grid; place-items:center; width:44px; height:44px; flex:0 0 44px; padding:4px; background:var(--green); border-radius:5px; }
+#fs-concepts .fs-fact-icon img { display:block; width:36px; height:36px; }
+#fs-concepts .fs-fact-label { min-width:0; }
 #fs-concepts .fs-section { padding-top:40px; padding-bottom:40px; }
 #fs-concepts .fs-section + .fs-section { border-top:1px solid var(--line); }
 #fs-concepts .fs-section-intro { display:flex; gap:24px; justify-content:space-between; align-items:end; margin-bottom:24px; }
@@ -156,8 +159,6 @@
 #fs-concepts .fs-form-row { font-size:13px; line-height:20px; padding:10px 0; }
 #fs-concepts .fs-intake .fs-text-button { width:100%; margin-top:16px; border-radius:5px; background:var(--green); color:var(--white); padding:14px 16px; text-align:center; text-decoration:none; font-size:14px; line-height:22px; }
 #fs-concepts .fs-facts { padding-top:24px; padding-bottom:24px; font-weight:600; }
-#fs-concepts .fs-facts span { border-left:0; padding-left:0; }
-#fs-concepts .fs-facts span::before { content:'•'; color:var(--green); padding-right:7px; }
 #fs-concepts .fs-page .fs-section-intro h2,#fs-concepts .fs-page .fs-end h2 { font-size:32px; line-height:38px; letter-spacing:-.8px; }
 #fs-concepts .fs-section { padding-top:48px; padding-bottom:48px; }
 #fs-concepts .fs-practical .fs-hero { background:var(--green); }
@@ -188,7 +189,6 @@
 #fs-concepts .fs-page:not(.fs-practical) .fs-form-placeholder { background:var(--white); }
 #fs-concepts .fs-page:not(.fs-practical) .fs-media { margin-top:32px; }
 #fs-concepts .fs-page:not(.fs-practical) .fs-facts { background:var(--green); color:var(--white); }
-#fs-concepts .fs-page:not(.fs-practical) .fs-facts span::before { color:#F7FF1C; }
 #fs-concepts .fs-page:not(.fs-practical) .fs-step-number { width:44px; height:44px; line-height:44px; border-radius:50%; background:var(--soft); color:var(--green); text-align:center; font-size:17px; }
 #fs-concepts .fs-end { padding-top:48px; padding-bottom:48px; background:var(--white); border-top:4px solid var(--spring); }
 #fs-concepts .fs-practical .fs-end { background:var(--green); color:var(--white); border-top:0; }
@@ -209,7 +209,8 @@
   #fs-concepts .fs-feature h2 { font-size:32px; line-height:36px; }
   #fs-concepts .fs-feature .fs-media { order:2; }
   #fs-concepts .fs-section { padding-top:36px; padding-bottom:36px; }
-  #fs-concepts .fs-facts { gap:20px 16px; font-size:12px; }
+  #fs-concepts .fs-facts { gap:20px 16px; font-size:13px; }
+  #fs-concepts .fs-fact { gap:10px; }
   #fs-concepts .fs-page:not(.fs-practical) .fs-step { grid-template-columns:44px 1fr; }
   #fs-concepts .fs-page .fs-section-intro h2,#fs-concepts .fs-page .fs-end h2 { font-size:29px; line-height:35px; }
   #fs-concepts .fs-thanks h1 { font-size:36px; line-height:40px; }
