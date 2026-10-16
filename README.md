@@ -93,10 +93,9 @@ The current site is still a review prototype: its toolbar, inactive intake form,
 
 ## Existing Cloudflare review site
 
-- [Client review](https://family-spring-review.pages.dev/)
-- [Thank-you preview](https://family-spring-review.pages.dev/thank-you/)
+The existing Cloudflare review site is separate from the new Kinsta production destination. Share preview links directly with reviewers instead of listing them in this README. Removing links here does not restrict access to the preview or remove URLs from Git history or other source files.
 
-These are existing review links, not the new Kinsta production destination. The branch-workflow setup does not redeploy or remove them. Do not use the old direct-to-main Cloudflare deployment routine for ongoing development. A preview deployment should be a separate, explicit task.
+Do not use the old direct-to-main Cloudflare deployment routine for ongoing development. A preview deployment should be a separate, explicit task.
 
 ## Content and files
 
