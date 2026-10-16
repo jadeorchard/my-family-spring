@@ -10,5 +10,5 @@
 - Run `python3 scripts/check_preview.py` and `node --check preview/review.js` before pushing. Visually check desktop and mobile layouts for UI changes.
 - Kinsta production deployment is controlled by Walt and must follow `main` only. Do not deploy development changes to the production site or domain. Use a separate preview/staging environment only when requested or already configured for the task.
 - The old Cloudflare project is a review environment, not the new production destination. Do not run the previous `wrangler ... --branch main` deployment routine as part of normal development.
-- `preview/` is the static-site directory. The intake form and final privacy notice are still placeholders; the review toolbar and noindex settings remain intentional until a separate launch change is approved.
+- `preview/` is the static-site directory. The landing page embeds the user-supplied live OnceHub intake form. Do not submit test requests or change the shared OnceHub flow without explicit authorization. The final privacy notice is still a placeholder; the review toolbar and noindex settings remain intentional until a separate launch change is approved.
 - Never commit credentials, form responses, or patient information.

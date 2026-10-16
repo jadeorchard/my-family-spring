@@ -26,11 +26,6 @@
 #fs-concepts .fs-intake { background:var(--white); border:1px solid var(--line); border-radius:var(--radius); padding:24px; }
 #fs-concepts .fs-intake h2 { font:600 25px/32px 'Raleway','Helvetica Neue',Arial,sans-serif; }
 #fs-concepts .fs-intake > p { font-size:16px; line-height:24px; margin-top:16px; }
-#fs-concepts .fs-form-placeholder { margin-top:24px; padding:20px; min-height:220px; border:1px solid var(--line); background:var(--soft); border-radius:3px; }
-#fs-concepts .fs-form-placeholder strong { display:block; color:var(--ink); font-size:15px; line-height:24px; font-weight:600; }
-#fs-concepts .fs-form-placeholder > p { margin:8px 0 16px; font-size:13px; line-height:20px; color:var(--muted); }
-#fs-concepts .fs-form-row { display:flex; gap:12px; align-items:center; padding:12px 0; border-top:1px solid var(--white); font-size:13px; line-height:20px; color:var(--body); }
-#fs-concepts .fs-form-row span { width:20px; height:20px; display:grid; place-items:center; font-size:11px; color:var(--green); background:var(--white); border-radius:50%; flex-shrink:0; }
 #fs-concepts .fs-demo-caption { display:block; color:var(--muted); font-size:11px; line-height:20px; margin-top:12px; }
 #fs-concepts .fs-media { margin:24px 0 0; padding:0; background:var(--white); color:var(--muted); }
 #fs-concepts .fs-media img { width:100%; height:auto; aspect-ratio:4/3; object-fit:cover; display:block; border-radius:5px; }
@@ -126,7 +121,6 @@
   #fs-concepts .fs-hero .fs-media { order:5; width:100%; margin:0; }
   #fs-concepts .fs-action { padding:20px 24px; }
   #fs-concepts .fs-intake { padding:20px; }
-  #fs-concepts .fs-form-placeholder { padding:16px; }
   #fs-concepts .fs-facts { grid-template-columns:1fr 1fr; padding:24px; gap:20px; }
   #fs-concepts .fs-section { padding-top:32px; padding-bottom:32px; }
   #fs-concepts .fs-section-intro { display:block; margin-bottom:24px; }
@@ -159,9 +153,6 @@
 #fs-concepts .fs-intake .fs-eyebrow { margin-bottom:12px; font-size:11px; letter-spacing:1.6px; }
 #fs-concepts .fs-intake h2 { font-size:28px; line-height:34px; letter-spacing:-.7px; }
 #fs-concepts .fs-intake > p { font-size:15px; line-height:24px; }
-#fs-concepts .fs-form-placeholder { margin-top:20px; min-height:200px; background:var(--soft); padding:20px; }
-#fs-concepts .fs-form-placeholder > p { font-size:12px; line-height:20px; }
-#fs-concepts .fs-form-row { font-size:13px; line-height:20px; padding:10px 0; }
 #fs-concepts .fs-intake .fs-text-button { width:100%; margin-top:16px; border-radius:5px; background:var(--green); color:var(--white); padding:14px 16px; text-align:center; text-decoration:none; font-size:14px; line-height:22px; }
 #fs-concepts .fs-facts { padding-top:24px; padding-bottom:24px; font-weight:600; }
 #fs-concepts .fs-page .fs-section-intro h2,#fs-concepts .fs-page .fs-end h2 { font-size:32px; line-height:38px; letter-spacing:-.8px; }
@@ -191,7 +182,6 @@
 #fs-concepts .fs-help-item h3 { font-size:22px; line-height:28px; }
 #fs-concepts .fs-page:not(.fs-practical) .fs-hero { background:var(--white); }
 #fs-concepts .fs-page:not(.fs-practical) .fs-hero .fs-intake { background:var(--soft); box-shadow:none; border-top:4px solid var(--spring); }
-#fs-concepts .fs-page:not(.fs-practical) .fs-form-placeholder { background:var(--white); }
 #fs-concepts .fs-page:not(.fs-practical) .fs-media { margin-top:32px; }
 #fs-concepts .fs-page:not(.fs-practical) .fs-facts { background:var(--green); color:var(--white); }
 #fs-concepts .fs-page:not(.fs-practical) .fs-step-number { width:44px; height:44px; line-height:44px; border-radius:50%; background:var(--soft); color:var(--green); text-align:center; font-size:17px; }
@@ -219,4 +209,18 @@
   #fs-concepts .fs-page:not(.fs-practical) .fs-step { grid-template-columns:44px 1fr; }
   #fs-concepts .fs-page .fs-section-intro h2,#fs-concepts .fs-page .fs-end h2 { font-size:29px; line-height:35px; }
   #fs-concepts .fs-thanks h1 { font-size:36px; line-height:40px; }
+}
+
+/* OnceHub owns the form UI and resizes its iframe as each step changes. */
+#fs-concepts .fs-oncehub-form { width:100%; min-height:400px; margin-top:20px; background:var(--white); border-radius:5px; }
+#fs-concepts .fs-oncehub-form iframe { max-width:100%; }
+#fs-concepts .fs-intake .fs-demo-caption a { color:var(--green); text-underline-offset:3px; }
+@container (min-width:641px) and (max-width:900px) {
+  #fs-concepts .fs-hero { grid-template-columns:1fr; }
+}
+@container (max-width:380px) {
+  /* OnceHub's form has a 280px minimum width inside its iframe. */
+  #fs-concepts .fs-hero { padding-left:12px; padding-right:12px; }
+  #fs-concepts .fs-hero .fs-intake { padding:20px; }
+  #fs-concepts .fs-oncehub-form { width:calc(100% + 24px); margin-left:-12px; }
 }

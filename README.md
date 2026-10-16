@@ -70,7 +70,9 @@ The PR release-agreement checklist still records the applicable agreement from M
 python3 -m http.server 8780 --bind 127.0.0.1 --directory preview
 ```
 
-Open `http://127.0.0.1:8780/` for the landing page or `/thank-you/` for the confirmation preview. The toolbar switches designs and viewport modes. Clear & practical is the default; the URL preserves the selection (`?design=practical` or `?design=warm`).
+Open `http://127.0.0.1:8780/` for the landing page or `/thank-you/` for the confirmation preview. The toolbar switches designs and viewport modes. Clear & practical is the default; the URL preserves the selection (`?design=practical` or `?design=warm`). Changing designs reloads the page so only one OnceHub form is embedded at a time; changing viewport mode keeps the current form in place.
+
+The consultation form connects to the live Family Spring intake flow. Submissions go to Family Spring through OnceHub. Do not submit test requests without authorization. OnceHub returned a provider error on localhost during verification; use the HTTPS development preview to review the form itself.
 
 Before pushing:
 
@@ -89,7 +91,15 @@ GitHub Actions runs these checks on pushes to `development` and PRs targeting `m
 - Confirm the hosting service's response-header configuration. `preview/_headers` and `wrangler.jsonc` are Cloudflare-specific and may not be applied by Kinsta. The Maps iframe policy and noindex headers must be configured appropriately for the chosen host.
 - This repo change does not configure or verify Kinsta access, deployment settings, DNS, or the final domain. Walt owns that setup.
 
-The current site is still a review prototype: its toolbar, inactive intake form, draft privacy notice, and noindex settings are intentional. Preparing the patient-facing launch is a separate reviewed change.
+The current site is still a review prototype with a live OnceHub intake form. Its review toolbar, draft privacy notice, and noindex settings remain intentional. Preparing the patient-facing launch is a separate reviewed change.
+
+## OnceHub intake form
+
+- The user-supplied embed uses website `WEB-2E96FEC366` and form `FORM-CEC381B1D3`. These are public embed identifiers, not credentials.
+- `preview/index.html` loads the official `https://cdn.oncehub.com/fo/form.js` script after `review.js` selects the visible design. Only that design's form slot is activated, avoiding duplicate vendor iframe IDs. The thank-you preview does not load OnceHub.
+- The form starts at 400px tall and can grow with OnceHub's iframe resize messages. It sits in the right consultation panel on desktop and below the hero copy on mobile. The page does not read form answers or add analytics events.
+- Cloudflare's CSP permits the official embed script, its stylesheet and inline styles, and the `ccgw.oncehub.com` iframe. Kinsta must apply equivalent response headers for its deployment. The form runs in OnceHub's iframe and follows its existing configuration, including provider-managed cookies and submission handling.
+- The shared form's questions, screening, routing, and completion destination have not been changed. The local `/thank-you/` route remains a design preview; a submission redirect to it and conversion tracking are not wired up by this embed change.
 
 ## Existing Cloudflare review site
 
@@ -110,4 +120,4 @@ Tori Haugen, LMFT; Geralyn Gendron, LMFT; and Daniel Hagan, LMFT are shown using
 
 Both office cards use standard Google Maps iframe embeds with native lazy loading, full addresses, and Get Directions links. The source URLs come from Family Spring's public site. Maps connect the visitor's browser to Google; the final privacy review must account for that. No API key or Google Maps JavaScript library is used.
 
-OnceHub, advertising tags, and analytics are not installed. Do not commit credentials, form responses, or patient information. The previews have explicit Family Spring sharing metadata and noindex settings; noindex is not access control.
+OnceHub is embedded on the landing page. Separate advertising tags and analytics are not installed. Do not commit credentials, form responses, or patient information. The previews have explicit Family Spring sharing metadata and noindex settings; noindex is not access control.
