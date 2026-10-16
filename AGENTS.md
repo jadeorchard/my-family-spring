@@ -1,6 +1,7 @@
 # Family Spring development workflow
 
 - `main` is the approved release branch. Walt is connecting production hosting on Kinsta to this repository.
+- The repository is public. Do not commit non-public client materials. GitHub protects `main` with an approving review, an up-to-date branch, the `Validate static preview` check, and resolved conversations; administrators are included.
 - Do ongoing work on `development`, or on a focused feature branch. Never make routine edits or commits on `main`.
 - Before editing, inspect the working tree and current branch. Preserve other contributors' work. If on a clean `main`, switch to `development` before changing files.
 - Push development work to its matching remote branch. Do not push directly to `main`, use `--no-verify` to bypass the main-branch push guard, force-push shared branches, or merge a PR without explicit user authorization for that release.

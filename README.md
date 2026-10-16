@@ -3,6 +3,7 @@
 Static landing-page and thank-you-page prototypes for Family Spring's Google Ads campaign.
 
 Repository: [jadeorchard/my-family-spring](https://github.com/jadeorchard/my-family-spring).
+The repository is public, including its committed files and history. Keep non-public client materials and credentials out of commits.
 Walt is connecting the new production site on Kinsta. Production changes must reach `main` through a reviewed pull request.
 
 ## Branches and release process
@@ -53,7 +54,15 @@ git config --local core.hooksPath .githooks
 
 The hook is a local safety net and can be bypassed by Git options or another client. It does not protect GitHub's web UI or other contributors' checkouts.
 
-GitHub currently returns a plan-restriction error for branch protections and rulesets on this private repository. When a supporting plan is available, an administrator should protect `main` by requiring pull requests, approving reviews, the `Validate static preview` check, and resolved conversations; disallow force pushes and deletion; and avoid routine bypasses. Until then, approvals are a documented team process rather than server-enforced rules.
+GitHub branch protection is active on `main`:
+
+- Pull requests need at least one approving review. New commits dismiss previous approvals.
+- The branch must be up to date and the `Validate static preview` check from GitHub Actions must pass.
+- Review conversations must be resolved.
+- Force pushes and branch deletion are blocked.
+- Administrators are subject to the same rules; no PR bypass allowance is configured.
+
+The PR release-agreement checklist still records the applicable agreement from Marvin, Walt, and the client. GitHub's one-review requirement does not by itself establish client approval. Record public-safe approval confirmations rather than copying private client communications into the public PR.
 
 ## Local preview and checks
 
