@@ -42,6 +42,12 @@
     const url = new URL(location.href);
     if (value === 'responsive') url.searchParams.delete(key);
     else url.searchParams.set(key, value);
+    // Start the selected design with one embed. Rendering both hidden variants
+    // would duplicate OnceHub's iframe ID and interfere with its resize handler.
+    if (key === 'design' && !isThankYou) {
+      location.assign(url.pathname + url.search);
+      return;
+    }
     history.replaceState(null, '', url.pathname + url.search);
     render();
   }
@@ -53,7 +59,8 @@
     button.addEventListener('click', () => {
       const form = root.querySelector(`[data-design="${design}"] .fs-intake`);
       form.scrollIntoView({block:'start', behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'});
-      form.querySelector('[data-review-path]').focus({preventScroll:true});
+      const target = form.querySelector('iframe') || form.querySelector('[data-intake-embed]');
+      target.focus({preventScroll:true});
     });
   });
   root.querySelectorAll('[data-privacy]').forEach(button => {
@@ -65,4 +72,8 @@
     });
   });
   render();
+  if (!isThankYou) {
+    // The deferred OnceHub script runs next, after only the visible form is marked.
+    root.querySelector(`[data-design="${design}"] [data-intake-embed]`).dataset.foForm = 'FORM-CEC381B1D3';
+  }
 })();

@@ -1,0 +1,12 @@
+#!/bin/sh
+# Local safety net. GitHub branch protection is still needed for server enforcement.
+while read -r local_ref local_sha remote_ref remote_sha
+do
+  if [ "$remote_ref" = "refs/heads/main" ]; then
+    printf '%s\n' 'Direct pushes to main are blocked in this checkout.' >&2
+    printf '%s\n' 'Push development (or a feature branch), then open a pull request into main.' >&2
+    exit 1
+  fi
+done
+
+exit 0
