@@ -26,4 +26,8 @@ jobs:
       - name: Validate required files, local links, assets, and HTML IDs
         run: python3 scripts/check_preview.py
       - name: Check JavaScript syntax
-        run: node --check preview/review.js
+        run: |
+          node --check preview/review.js
+          node --check preview/tracking.js
+      - name: Verify tracking event boundaries
+        run: node --test scripts/tracking.test.cjs

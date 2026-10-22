@@ -10,5 +10,7 @@
 - Run `python3 scripts/check_preview.py` and `node --check preview/review.js` before pushing. Visually check desktop and mobile layouts for UI changes.
 - Kinsta production deployment is controlled by Walt and must follow `main` only. Do not deploy development changes to the production site or domain. Use a separate preview/staging environment only when requested or already configured for the task.
 - The old Cloudflare project is a review environment, not the new production destination. Do not run the previous `wrangler ... --branch main` deployment routine as part of normal development.
-- `preview/` is the static-site directory. The landing page embeds the user-supplied live OnceHub intake form. Do not submit test requests or change the shared OnceHub flow without explicit authorization. The final privacy notice is still a placeholder; the review toolbar and noindex settings remain intentional until a separate launch change is approved.
+- `preview/` is the static-site directory. The landing page embeds the user-supplied live OnceHub intake form. Do not submit test requests or change the shared OnceHub flow without explicit authorization. The final privacy notice is still a placeholder; noindex settings remain intentional until a separate launch change is approved.
 - Never commit credentials, form responses, or patient information.
+
+- The landing page uses the shared GTM container once and forwards only allowlisted OnceHub event names from the trusted iframe. Keep payloads out of the dataLayer. Keep the unconnected thank-you preview untracked because the shared container currently counts thank-you page views as leads. Run `node --test scripts/tracking.test.cjs` for tracking changes.

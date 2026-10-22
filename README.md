@@ -1,6 +1,6 @@
 # My Family Spring
 
-Static landing-page and thank-you-page prototypes for Family Spring's Google Ads campaign.
+Clear & practical landing page and an unconnected thank-you preview for Family Spring's Google Ads campaign.
 
 Repository: [jadeorchard/my-family-spring](https://github.com/jadeorchard/my-family-spring).
 The repository is public, including its committed files and history. Keep non-public client materials and credentials out of commits.
@@ -70,7 +70,7 @@ The PR release-agreement checklist still records the applicable agreement from M
 python3 -m http.server 8780 --bind 127.0.0.1 --directory preview
 ```
 
-Open `http://127.0.0.1:8780/` for the landing page or `/thank-you/` for the confirmation preview. The toolbar switches designs and viewport modes. Clear & practical is the default; the URL preserves the selection (`?design=practical` or `?design=warm`). Changing designs reloads the page so only one OnceHub form is embedded at a time; changing viewport mode keeps the current form in place.
+Open `http://127.0.0.1:8780/` for the landing page or `/thank-you/` for the confirmation preview. Only Clear & practical is shipped. The Design/View controls and review toolbar have been removed; old design/view query parameters no longer change the page. Test responsive layouts by resizing the browser.
 
 The consultation form connects to the live Family Spring intake flow. Submissions go to Family Spring through OnceHub. Do not submit test requests without authorization. OnceHub returned a provider error on localhost during verification; use the HTTPS development preview to review the form itself.
 
@@ -79,6 +79,8 @@ Before pushing:
 ```sh
 python3 scripts/check_preview.py
 node --check preview/review.js
+node --check preview/tracking.js
+node --test scripts/tracking.test.cjs
 ```
 
 GitHub Actions runs these checks on pushes to `development` and PRs targeting `main`. The checks validate local file references, duplicate HTML IDs, required files, and JavaScript syntax. They do not deploy the site or contact the map/intake providers. Visual changes also need desktop and mobile review.
@@ -91,13 +93,13 @@ GitHub Actions runs these checks on pushes to `development` and PRs targeting `m
 - Confirm the hosting service's response-header configuration. `preview/_headers` and `wrangler.jsonc` are Cloudflare-specific and may not be applied by Kinsta. The Maps iframe policy and noindex headers must be configured appropriately for the chosen host.
 - This repo change does not configure or verify Kinsta access, deployment settings, DNS, or the final domain. Walt owns that setup.
 
-The current site is still a review prototype with a live OnceHub intake form. Its review toolbar, draft privacy notice, and noindex settings remain intentional. Preparing the patient-facing launch is a separate reviewed change.
+The current site is still a review prototype with a live OnceHub intake form. The draft privacy notice and noindex settings remain until launch review is complete. Preparing the patient-facing launch is a separate reviewed change.
 
 ## OnceHub intake form
 
 - The user-supplied embed uses website `WEB-2E96FEC366` and form `FORM-CEC381B1D3`. These are public embed identifiers, not credentials.
-- `preview/index.html` loads the official `https://cdn.oncehub.com/fo/form.js` script after `review.js` selects the visible design. Only that design's form slot is activated, avoiding duplicate vendor iframe IDs. The thank-you preview does not load OnceHub.
-- The form starts at 400px tall and can grow with OnceHub's iframe resize messages. It sits in the right consultation panel on desktop and below the hero copy on mobile. The page does not read form answers or add analytics events.
+- `preview/index.html` has one form slot and loads the official `https://cdn.oncehub.com/fo/form.js` script once. The thank-you preview does not load OnceHub.
+- The form starts at 400px tall and can grow with OnceHub's iframe resize messages. It sits in the right consultation panel on desktop and below the hero copy on mobile. The tracking listener forwards only approved event names, never form answers.
 - Cloudflare's CSP permits the official embed script, its stylesheet and inline styles, and the `ccgw.oncehub.com` iframe. Kinsta must apply equivalent response headers for its deployment. The form runs in OnceHub's iframe and follows its existing configuration, including provider-managed cookies and submission handling.
 - The shared form's questions, screening, routing, and completion destination have not been changed. The local `/thank-you/` route remains a design preview; a submission redirect to it and conversion tracking are not wired up by this embed change.
 
@@ -120,4 +122,14 @@ Tori Haugen, LMFT; Geralyn Gendron, LMFT; and Daniel Hagan, LMFT are shown using
 
 Both office cards use standard Google Maps iframe embeds with native lazy loading, full addresses, and Get Directions links. The source URLs come from Family Spring's public site. Maps connect the visitor's browser to Google; the final privacy review must account for that. No API key or Google Maps JavaScript library is used.
 
-OnceHub is embedded on the landing page. Separate advertising tags and analytics are not installed. Do not commit credentials, form responses, or patient information. The previews have explicit Family Spring sharing metadata and noindex settings; noindex is not access control.
+OnceHub and the existing GTM container are installed on the landing page. GA4 and advertising tag configuration remain managed in GTM. Do not commit credentials, form responses, or patient information. The previews have explicit Family Spring sharing metadata and noindex settings; noindex is not access control.
+
+## GTM and event tracking
+
+- The landing page loads `GTM-5RFN8RBW` once through the first-party `tracking.js` loader. The standard noscript fallback is also present. No separate GA4 or Meta pixel loader is added.
+- Only messages from the embedded form's own window at `https://ccgw.oncehub.com` are accepted. Only `oncehub.form.started` and `oncehub.form.completed` are forwarded, once each per page load, as `{event: name}`. Payloads, answers, names, form IDs, and emails are never copied. Button-click and loaded events are ignored.
+- Add `?tracking_debug=1` during QA to log the two accepted event names in the browser console. It does not log payloads and does not disable live analytics. Ordinary preview visits can send page views to the shared GA4 property.
+- The published GTM container inspected on October 22, 2026 has GA4 `G-T8GQY20RCQ` and Meta FormStart/FormComplete Custom HTML tags. Those Meta tags call an existing `fbq`; the container does not install the base pixel. Walt must confirm/add the intended base pixel in GTM and verify the approved settings before Meta event delivery can be considered working.
+- The shared container fires `generate_lead` on `/thank-you/` page views. Therefore this repo's unconnected thank-you preview deliberately loads neither GTM nor its noscript fallback. Keep it untracked until the completion route and false-conversion handling are reviewed. The current OnceHub redirect to the existing main-site thank-you page is unchanged.
+- Cloudflare CSP allows GTM/Tag Assistant, GA4, and Meta resource hosts. The two currently published Meta Custom HTML script bodies are allowed by exact SHA-256 hashes instead of blanket inline-JavaScript/eval permissions. Any GTM Custom HTML changes require a CSP review and possibly updated hashes. Kinsta/Sevalla must apply equivalent headers; `_headers` is Cloudflare-specific.
+- Before launch: Walt approves the PR, confirms DNS/HTTPS for the approved subdomain, resolves the OnceHub completion destination with Sam, verifies GTM triggers on that hostname and the base pixel, and coordinates an explicitly authorized test submission. Finalize the privacy notice separately. No live submission was made during development QA.

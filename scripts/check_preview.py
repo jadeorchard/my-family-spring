@@ -29,7 +29,7 @@ class PageParser(HTMLParser):
 def main():
     errors = []
     pages = sorted(ROOT.rglob("*.html"))
-    for required in ("index.html", "thank-you/index.html", "review.js", "site.css", "review.css"):
+    for required in ("index.html", "thank-you/index.html", "review.js", "tracking.js", "site.css", "review.css"):
         if not (ROOT / required).is_file():
             errors.append(f"Missing required file: {required}")
 
