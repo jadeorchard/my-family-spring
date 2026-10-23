@@ -1,39 +1,15 @@
 html { color-scheme:light; scroll-behavior:smooth; }
-body { margin:0; background:#F2F2F2; color:#464646; font-family:Raleway,Arial,sans-serif; }
+body { margin:0; background:#FFFFFF; color:#464646; font-family:Raleway,Arial,sans-serif; }
 * { box-sizing:border-box; }
 [hidden] { display:none!important; }
-a,button,select,summary { -webkit-tap-highlight-color:transparent; }
-button,select { font:inherit; }
-a,button,summary,select { cursor:pointer; }
+a,button,summary { -webkit-tap-highlight-color:transparent; }
+button { font:inherit; }
+a,button,summary { cursor:pointer; }
 :focus-visible { outline:2px solid #123F6E; outline-offset:3px; }
-.review-bar { background:#fff; border-bottom:1px solid #ddd; padding:16px 24px; }
-.review-inner { max-width:1160px; margin:auto; display:flex; justify-content:space-between; gap:20px; align-items:center; flex-wrap:wrap; }
-.review-title { display:flex; flex-direction:column; gap:5px; }
-.review-title strong { color:#000; font-size:16px; font-weight:700; }
-.review-title span { font-size:12px; line-height:18px; }
-.review-controls { display:flex; align-items:end; gap:16px; flex-wrap:wrap; }
-.review-field { display:flex; flex-direction:column; gap:6px; font-size:11px; font-weight:600; }
-.review-field select { min-height:44px; border:1px solid #ccc; background:#fff; color:#000; padding:8px 28px 8px 12px; border-radius:5px; font-size:14px; }
-.review-tabs { display:flex; gap:4px; border:1px solid #ccc; border-radius:5px; padding:3px; }
-.review-tabs a { min-height:38px; display:flex; align-items:center; justify-content:center; text-decoration:none; color:#464646; padding:8px 12px; border-radius:3px; font-size:13px; }
-.review-tabs a[aria-current=page] { color:#fff; background:#257002; }
-#fs-concepts { width:100%; max-width:1160px; margin:24px auto; }
-#fs-concepts.mobile-preview { max-width:390px; }
-#fs-concepts .fs-stage { min-height:0!important; }
-#fs-concepts .fs-preview { display:none; }
+.gtm-noscript { display:none; visibility:hidden; border:0; }
+#fs-concepts { width:100%; max-width:1160px; margin:0 auto; }
 #fs-concepts .fs-page { width:100%; }
-#fs-concepts .fs-intake .fs-text-button { display:block; }
 #fs-concepts .fs-text-button { display:inline-block; font-family:inherit; }
 #fs-concepts .fs-demo-notice { color:#464646; background:#F2F2F2; border-left:3px solid #35B729; border-radius:3px; padding:12px 16px; margin-bottom:28px; font-size:13px; line-height:22px; }
 #fs-concepts .fs-confirmation .fs-thanks { padding-top:40px; }
-.review-footer { max-width:1160px; margin:0 auto; padding:0 24px 24px; color:#6B6D70; font-size:12px; line-height:20px; }
-@media(max-width:720px) {
- .review-bar { padding:16px; }
- .review-inner { gap:16px; }
- .review-controls { width:100%; gap:12px; }
- .review-field select { font-size:16px; }
- .review-tabs { flex:1; }
- .review-tabs a { flex:1; }
- #fs-concepts { margin-top:0; margin-bottom:20px; }
-}
 @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }

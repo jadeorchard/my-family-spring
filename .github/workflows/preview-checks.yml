@@ -1,0 +1,33 @@
+name: Preview checks
+
+on:
+  push:
+    branches: [development]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: preview-checks-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Validate static preview
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out the proposed change
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Validate required files, local links, assets, and HTML IDs
+        run: python3 scripts/check_preview.py
+      - name: Check JavaScript syntax
+        run: |
+          node --check preview/review.js
+          node --check preview/tracking.js
+      - name: Verify tracking event boundaries
+        run: node --test scripts/tracking.test.cjs

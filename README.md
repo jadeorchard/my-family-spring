@@ -1,42 +1,135 @@
 # My Family Spring
 
-Client review preview for Family Spring's planned Google Ads landing page and thank-you page.
+Clear & practical landing page and an unconnected thank-you preview for Family Spring's Google Ads campaign.
 
-The preview includes the Warm & personal and Clear & practical design options. It does not collect or submit patient information. OnceHub, advertising tags, and analytics are not installed.
+Repository: [jadeorchard/my-family-spring](https://github.com/jadeorchard/my-family-spring).
+The repository is public, including its committed files and history. Keep non-public client materials and credentials out of commits.
+Walt is connecting the new production site on Kinsta. Production changes must reach `main` through a reviewed pull request.
 
-Clear & practical is the default, following client preference. Both designs use custom trust-strip icons; Clear & practical uses credential, insurance, two-office, and video-consultation symbols in a two-column mobile layout.
+## Branches and release process
 
-- [Client review](https://family-spring-review.pages.dev/)
-- [Thank-you preview](https://family-spring-review.pages.dev/thank-you/)
+| Branch | Purpose | Deployment |
+| --- | --- | --- |
+| `development` | Ongoing work and stakeholder review | Local preview, or a separately configured staging site |
+| `main` | Approved releases | Kinsta production, once Walt configures it |
 
-## Local preview
+1. Work on `development` (or a focused feature branch), never directly on `main`.
+2. Preview locally and run the checks below.
+3. Commit and push to the same development branch. This must not publish to the production site.
+4. Open a draft PR from `development` into `main`. Additional pushes update the same PR. If one is already open, continue using it.
+5. Record Marvin's, Walt's, and the client's applicable approvals in the PR. Mark it ready when the work is ready for final review.
+6. Only after agreement, merge the approved PR into `main`. Walt's production integration should deploy that commit. Do not merge `main` locally and push it as a release shortcut.
+
+Typical commands:
+
+```sh
+git switch development
+git pull --ff-only
+# Make edits and run checks.
+git add <changed-files>
+git commit -m "Describe the change"
+git push origin development
+# Create this only when there is no existing PR for the current release.
+gh pr create --draft --base main --head development
+```
+
+After a PR is merged, synchronize the shared development branch without rewriting history:
+
+```sh
+git fetch origin
+git switch development
+git merge origin/main
+git push origin development
+```
+
+Prefer a merge commit for PRs from this long-lived branch. Resolve any conflicts normally; do not reset or force-push shared history.
+
+## Local push guard
+
+This repository includes a pre-push hook that refuses any push targeting `refs/heads/main`, including `development:main` and branch deletion. Enable it in each checkout:
+
+```sh
+git config --local core.hooksPath .githooks
+```
+
+The hook is a local safety net and can be bypassed by Git options or another client. It does not protect GitHub's web UI or other contributors' checkouts.
+
+GitHub branch protection is active on `main`:
+
+- Pull requests need at least one approving review. New commits dismiss previous approvals.
+- The branch must be up to date and the `Validate static preview` check from GitHub Actions must pass.
+- Review conversations must be resolved.
+- Force pushes and branch deletion are blocked.
+- Administrators are subject to the same rules; no PR bypass allowance is configured.
+
+The PR release-agreement checklist still records the applicable agreement from Marvin, Walt, and the client. GitHub's one-review requirement does not by itself establish client approval. Record public-safe approval confirmations rather than copying private client communications into the public PR.
+
+## Local preview and checks
 
 ```sh
 python3 -m http.server 8780 --bind 127.0.0.1 --directory preview
 ```
 
-Open `http://127.0.0.1:8780/` for the landing page or `/thank-you/` for the confirmation preview. The review toolbar switches designs and viewport modes. The chosen design is preserved in the URL (`?design=warm` or `?design=practical`).
+Open `http://127.0.0.1:8780/` for the landing page or `/thank-you/` for the confirmation preview. Only Clear & practical is shipped. The Design/View controls and review toolbar have been removed; old design/view query parameters no longer change the page. Test responsive layouts by resizing the browser.
 
-## Cloudflare deployment
+The consultation form connects to the live Family Spring intake flow. Submissions go to Family Spring through OnceHub. Do not submit test requests without authorization. OnceHub returned a provider error on localhost during verification; use the HTTPS development preview to review the form itself.
 
-The `family-spring-review` Pages project is a dedicated design review site. Deploy only the `preview/` directory:
+Before pushing:
 
 ```sh
-wrangler pages deploy preview --project-name family-spring-review --branch main
+python3 scripts/check_preview.py
+node --check preview/review.js
+node --check preview/tracking.js
+node --test scripts/tracking.test.cjs
 ```
 
-Authentication comes from the local Wrangler login or Cloudflare environment credentials. Never commit credentials.
+GitHub Actions runs these checks on pushes to `development` and PRs targeting `main`. The checks validate local file references, duplicate HTML IDs, required files, and JavaScript syntax. They do not deploy the site or contact the map/intake providers. Visual changes also need desktop and mobile review.
 
-All preview responses include `noindex` instructions. The site is publicly viewable by link; noindex is not access control.
+## Kinsta handoff for Walt
 
-## Files
+- Connect `jadeorchard/my-family-spring` and use **`main` only** as the production source branch.
+- The static site is in **`preview/`**. It requires no compilation. Configure the selected Kinsta service to publish that directory, not the repository root.
+- Keep `development` separate from production. If a shared preview is needed, use a separate staging target and URL.
+- Confirm the hosting service's response-header configuration. `preview/_headers` and `wrangler.jsonc` are Cloudflare-specific and may not be applied by Kinsta. The Maps iframe policy and noindex headers must be configured appropriately for the chosen host.
+- This repo change does not configure or verify Kinsta access, deployment settings, DNS, or the final domain. Walt owns that setup.
 
-- `preview/`: self-contained static review site with local image assets.
-- `design-reference/exported-mockups.html`: original standalone export for reference, excluded from deployment.
-- `wrangler.jsonc`: Cloudflare Pages configuration.
+The current site is still a review prototype with a live OnceHub intake form. The draft privacy notice and noindex settings remain until launch review is complete. Preparing the patient-facing launch is a separate reviewed change.
 
-Tori Haugen, LMFT; Geralyn Gendron, LMFT; and Daniel Hagan, LMFT are shown using the photos and credentials supplied by Marvin. The intake form and final privacy notice remain placeholders. The San Rafael interior photography and logo come from the client-provided asset folder.
+## OnceHub intake form
 
-Both office cards contain standard Google Maps iframe embeds using the URLs from Family Spring's public website. Maps display directly and use native lazy loading; full addresses and **Get Directions** links are also available. No API key or Google Maps JavaScript library is used. The CSP permits the two Google iframe origins only; other third-party tracking scripts remain disabled. Loading a map connects the visitor's browser to Google and needs inclusion in the final privacy review before a patient campaign launches.
+- The user-supplied embed uses website `WEB-2E96FEC366` and form `FORM-CEC381B1D3`. These are public embed identifiers, not credentials.
+- `preview/index.html` has one form slot and loads the official `https://cdn.oncehub.com/fo/form.js` script once. The thank-you preview does not load OnceHub.
+- The form starts at 400px tall and can grow with OnceHub's iframe resize messages. It sits in the right consultation panel on desktop and below the hero copy on mobile. The tracking listener forwards only approved event names, never form answers.
+- Cloudflare's CSP permits the official embed script, its stylesheet and inline styles, and the `ccgw.oncehub.com` iframe. Kinsta must apply equivalent response headers for its deployment. The form runs in OnceHub's iframe and follows its existing configuration, including provider-managed cookies and submission handling.
+- The shared form's questions, screening, routing, and completion destination have not been changed. The local `/thank-you/` route remains a design preview; a submission redirect to it and conversion tracking are not wired up by this embed change.
 
-Both pages provide explicit Family Spring browser titles, Open Graph metadata, and social card titles. Crawlers may read this metadata; the noindex meta tags and response headers remain in place.
+## Existing Cloudflare review site
+
+The existing Cloudflare review site is separate from the new Kinsta production destination. Share preview links directly with reviewers instead of listing them in this README. Removing links here does not restrict access to the preview or remove URLs from Git history or other source files.
+
+Do not use the old direct-to-main Cloudflare deployment routine for ongoing development. A preview deployment should be a separate, explicit task.
+
+## Content and files
+
+- `preview/`: static review site and image/icon assets.
+- `design-reference/exported-mockups.html`: historical standalone mockup export; not a deployment directory.
+- `wrangler.jsonc`: configuration retained for the existing Cloudflare review project.
+- `.githooks/pre-push`: local main-push guard.
+- `.github/`: PR template and validation workflow.
+- `AGENTS.md`: development and release instructions for coding agents.
+
+Tori Haugen, LMFT; Geralyn Gendron, LMFT; and Daniel Hagan, LMFT are shown using the photos and credentials supplied by Marvin. The San Rafael interior photography and logo come from the supplied asset folder. Both designs have custom trust-strip icons, including the approved green outlines on white in Clear & practical.
+
+Both office cards use standard Google Maps iframe embeds with native lazy loading, full addresses, and Get Directions links. The source URLs come from Family Spring's public site. Maps connect the visitor's browser to Google; the final privacy review must account for that. No API key or Google Maps JavaScript library is used.
+
+OnceHub and the existing GTM container are installed on the landing page. GA4 and advertising tag configuration remain managed in GTM. Do not commit credentials, form responses, or patient information. The previews have explicit Family Spring sharing metadata and noindex settings; noindex is not access control.
+
+## GTM and event tracking
+
+- The landing page loads `GTM-5RFN8RBW` once through the first-party `tracking.js` loader. The standard noscript fallback is also present. No separate GA4 or Meta pixel loader is added.
+- Only messages from the embedded form's own window at `https://ccgw.oncehub.com` are accepted. Only `oncehub.form.started` and `oncehub.form.completed` are forwarded, once each per page load, as `{event: name}`. Payloads, answers, names, form IDs, and emails are never copied. Button-click and loaded events are ignored.
+- Add `?tracking_debug=1` during QA to log the two accepted event names in the browser console. It does not log payloads and does not disable live analytics. Ordinary preview visits can send page views to the shared GA4 property.
+- The published GTM container inspected on October 22, 2026 has GA4 `G-T8GQY20RCQ` and Meta FormStart/FormComplete Custom HTML tags. Those Meta tags call an existing `fbq`; the container does not install the base pixel. Walt must confirm/add the intended base pixel in GTM and verify the approved settings before Meta event delivery can be considered working.
+- The shared container fires `generate_lead` on `/thank-you/` page views. Therefore this repo's unconnected thank-you preview deliberately loads neither GTM nor its noscript fallback. Keep it untracked until the completion route and false-conversion handling are reviewed. The current OnceHub redirect to the existing main-site thank-you page is unchanged.
+- Cloudflare CSP allows GTM/Tag Assistant, GA4, and Meta resource hosts. The two currently published Meta Custom HTML script bodies are allowed by exact SHA-256 hashes instead of blanket inline-JavaScript/eval permissions. Any GTM Custom HTML changes require a CSP review and possibly updated hashes. Kinsta/Sevalla must apply equivalent headers; `_headers` is Cloudflare-specific.
+- Before launch: Walt approves the PR, confirms DNS/HTTPS for the approved subdomain, resolves the OnceHub completion destination with Sam, verifies GTM triggers on that hostname and the base pixel, and coordinates an explicitly authorized test submission. Finalize the privacy notice separately. No live submission was made during development QA.
