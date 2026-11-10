@@ -64,3 +64,43 @@ test('only the landing page loads tracking; confirmation preview cannot fire a p
   assert.ok(!landing.includes('review-design'));
   assert.ok(!landing.includes('fs-warm'));
 });
+
+const headers = readFileSync(join(__dirname, '../preview/_headers'), 'utf8');
+const csp = headers.match(/^\s*Content-Security-Policy:\s*(.+)$/m)[1];
+const directives = Object.fromEntries(csp.split(';').map(value => {
+  const [name, ...sources] = value.trim().split(/\s+/);
+  return [name, sources];
+}));
+
+test('CSP permits the GA4 collection host itself as well as regional subdomains', () => {
+  for (const host of ['https://analytics.google.com', 'https://*.analytics.google.com',
+    'https://*.google-analytics.com']) {
+    assert.ok(directives['connect-src'].includes(host), `Missing GA4 connection source: ${host}`);
+  }
+});
+
+test('CSP permits Google advertising transports while retaining script and form restrictions', () => {
+  const required = {
+    'script-src': ['https://www.googletagmanager.com', 'https://www.googleadservices.com',
+      'https://googleads.g.doubleclick.net', 'https://www.google.com'],
+    'img-src': ['https://www.googleadservices.com', 'https://googleads.g.doubleclick.net',
+      'https://stats.g.doubleclick.net', 'https://pagead2.googlesyndication.com', 'https://www.google.com'],
+    'connect-src': ['https://www.googleadservices.com', 'https://googleads.g.doubleclick.net',
+      'https://stats.g.doubleclick.net', 'https://pagead2.googlesyndication.com',
+      'https://ad.doubleclick.net', 'https://www.google.com'],
+  };
+  for (const [directive, hosts] of Object.entries(required)) {
+    for (const host of hosts) {
+      assert.ok(directives[directive].includes(host), `Missing ${directive} source: ${host}`);
+    }
+  }
+  for (const sources of Object.values(directives)) {
+    assert.ok(!sources.includes('*'));
+    assert.ok(!sources.includes('https:'));
+  }
+  assert.ok(!directives['script-src'].includes("'unsafe-inline'"));
+  assert.ok(!directives['script-src'].includes("'unsafe-eval'"));
+  for (const directive of ['form-action', 'base-uri', 'frame-ancestors', 'object-src']) {
+    assert.deepEqual(directives[directive], ["'none'"]);
+  }
+});
